@@ -17,9 +17,16 @@
     service:
       name: httpd
       state: started
+      enabled: yes
 
   - name: Enable access to port 80
     firewalld:
       service: http
       permanent: true
       state: enabled
+    changed_when: true
+    notify: firewalld-reload
+
+  handlers:
+  - name: firewalld-reload
+    command: firewall-cmd --reload
