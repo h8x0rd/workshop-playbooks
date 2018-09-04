@@ -21,5 +21,5 @@
   - name: Enable access to port 80
     firewalld:
       service: http
-      permanent: true
-      state: enabled
+      permanent: false
+      state: disabled
